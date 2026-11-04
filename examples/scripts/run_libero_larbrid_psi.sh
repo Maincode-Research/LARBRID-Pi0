@@ -1,0 +1,38 @@
+#!/bin/bash
+proj_name=LARBRID_pi0_Libero
+device_id=0
+task_id=${TASK_ID:-20}
+seed=${SEED:-1234} # override with SEED=<seed> bash <this script>
+algorithm=larbrid_psi
+
+export DISPLAY=:0
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl  
+export MUJOCO_EGL_DEVICE_ID=$device_id
+
+export OPENPI_DATA_HOME=./openpi
+export EXP=./logs/$proj_name; 
+export CUDA_VISIBLE_DEVICES=$device_id
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+export PYTHONPATH="$(pwd)${PYTHONPATH:+:$PYTHONPATH}"  # repo root first, so `examples` resolves to this repo
+
+#target encoder try
+python3 examples/launch_train_sim.py \
+--algorithm ${algorithm} \
+--env libero \
+--task_id ${task_id} \
+--prefix larbrid_pi0_libero90_${algorithm} \
+--wandb_project ${proj_name} \
+--batch_size 256 \
+--discount 0.999 \
+--seed ${seed} \
+--max_steps 500000  \
+--eval_interval 10000 \
+--log_interval 500 \
+--eval_episodes 10 \
+--multi_grad_step 20 \
+--start_online_updates 500 \
+--resize_image 64 \
+--action_magnitude 1.0 \
+--query_freq 20 \
+--ae_warmup_steps 5000

@@ -1,0 +1,54 @@
+# Python 3.12 + CUDA 12.8 (e.g. B200, NVIDIA driver 570). torch==2.6.0+cpu needs the PyTorch CPU index, see README.
+diffusers==0.33.1
+distrax==0.1.5
+# 1.0.28 is the first dm-control release that runs on mujoco 3.x (1.0.14 fails loading the aloha model)
+dm-control==1.0.28
+# mujoco 2.3.7 has no Python 3.12 wheel; LIBERO and aloha both run on 3.3.1
+mujoco==3.3.1
+easydict==1.13
+einops==0.8.1
+flax==0.10.2
+future==1.0.0
+gym==0.26.2
+gym-notices==0.0.8
+gymnasium==1.0.0
+h5py==3.13.0
+imageio==2.37.0
+jax[cuda12]==0.5.0
+ml_collections==1.0.0
+ml_dtypes==0.5.1
+optax==0.2.4
+optree==0.15.0
+orbax-checkpoint==0.11.1
+orderly-set==5.4.0
+packaging==24.2
+pandas==2.2.3
+# openpi needs pillow>=11
+pillow>=11.0.0,<12
+scipy==1.15.2
+tensorflow==2.19.0
+etils==1.12.2
+matplotlib==3.9.3
+wandb[media]==0.19.9
+opencv-python==4.11.0.86
+robosuite==1.4.1
+# 0.1.2 is the first gym-aloha release that allows mujoco 3 (0.1.1 caps mujoco<3)
+gym-aloha==0.1.2
+bddl==3.5.0
+tf_keras==2.19.0
+moviepy==1.0.3
+# LIBERO only needs CPU torch; a GPU torch from PyPI pulls in CUDA 13 libs whose cuDNN/NCCL overwrite the CUDA 12 files JAX loads
+torch==2.6.0+cpu
+
+# CUDA 12.8 stack for jax[cuda12]==0.5.0; unpinned resolves to CUDA 12.9 / cuDNN 9.27, which fails on driver 570
+nvidia-cublas-cu12==12.8.5.5
+nvidia-cuda-cupti-cu12==12.8.90
+nvidia-cuda-nvcc-cu12==12.8.93
+nvidia-cuda-nvrtc-cu12==12.8.93
+nvidia-cuda-runtime-cu12==12.8.90
+nvidia-nvjitlink-cu12==12.8.93
+nvidia-cudnn-cu12==9.8.0.87
+nvidia-cufft-cu12==11.3.3.83
+nvidia-cusolver-cu12==11.7.3.90
+nvidia-cusparse-cu12==12.5.8.93
+nvidia-nccl-cu12==2.26.5
