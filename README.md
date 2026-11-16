@@ -2,7 +2,10 @@
 
 # LARBRID Fine Tuning of π₀: Diffusion Policy Fine Tuning with Latent Noise Representation Bridging
 
-<!-- ## [[website](https://diffusion-steering.github.io)]      [[paper](https://arxiv.org/abs/2506.15799)] -->
+<p>
+  <a href="https://arxiv.org/abs/2611.07275"><img src="https://img.shields.io/badge/arXiv-2611.07275-b31b1b.svg" alt="arXiv"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+</p>
 
 </div>
 
